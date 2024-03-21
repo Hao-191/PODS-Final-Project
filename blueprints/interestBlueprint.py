@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, render_template, session, redirect, url_for, request
 from utils.interestUtils import *
+from utils.unitUtils import *
 import pymysql
 
 # Create a Blueprint named 'interest'
@@ -32,7 +33,7 @@ def postNewInterest(unitRentID):
         except pymysql.Error as e:
             conn.rollback()
             flash(f"Failed to post interest: {e}", "error")
-            
+
         finally:
             cursor.close()
             conn.close()
@@ -47,7 +48,7 @@ def postNewInterest(unitRentID):
     except pymysql.Error as e:
         flash(f"Database error: {e}", "error")
         return redirect(url_for("home.home"))
-    
+
     finally:
         cursor.close()
         conn.close()

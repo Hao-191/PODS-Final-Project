@@ -1,4 +1,4 @@
-<h2>Apartment Units</h2>
+<h2>Apartment Units Information</h2>
 <table>
     <thead>
         <tr>
@@ -16,9 +16,9 @@
         <tr>
             <td>{{ unit.CompanyName }}</td>
             <td><a
-                    href="{{ url_for('apartment.buildingDetails', companyName=unit.CompanyName, buildingName=unit.BuildingName) }}">{{
+                    href="{{ url_for('apartment.buildingDetails', companyName=unit.CompanyName, buildingName=unit.BuildingName) }}" class="table-button">{{
                     unit.BuildingName }}</a></td>
-            <td><a href="{{ url_for('apartment.unitDetails', unitRentID=unit.UnitRentID) }}">{{ unit.unitNumber }}</a>
+            <td><a href="{{ url_for('apartment.unitDetails', unitRentID=unit.UnitRentID) }}" class="table-button">{{ unit.unitNumber }}</a>
             </td>
             <td>{{ unit.MonthlyRent }}</td>
             <td>{{ unit.squareFootage }}</td>

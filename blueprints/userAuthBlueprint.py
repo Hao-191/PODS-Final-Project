@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, render_template, request, session, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from utils.userAuthUtils import *
+import pymysql
 
 # Create a Blueprint named 'auth'
 userAuth = Blueprint("auth", __name__)
@@ -94,6 +95,31 @@ def registerAuth():
 
     return redirect(url_for("auth.login"))
 
+@userAuth.route("/userInfo/<username>")
+def userInfo(username):
+    if "username" not in session:
+        flash("Please login to access this page.")
+        return redirect(url_for("auth.login"))
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    try:
+        userDetails = fetchUserInfo(cursor, username)
+        
+    except pymysql.Error as e:
+        flash(f"Database error: {e}", "error")
+        return redirect(url_for("home.home"))
+    
+    finally:
+        cursor.close()
+        conn.close()
+
+    if not userDetails:
+        flash("User not found.", "error")
+        return redirect(url_for("home.home"))
+
+    return render_template("userAuthPages/userInfo.html", userDetails=userDetails)
 
 @userAuth.route("/logout")
 def logout():

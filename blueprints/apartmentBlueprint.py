@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, render_template, session, redirect, url_for
+from flask import Blueprint, flash, render_template, session, redirect, url_for, request
 from utils.buildingUtils import *
 from utils.unitUtils import *
 import pymysql
@@ -9,7 +9,7 @@ apartment = Blueprint("apartment", __name__)
 from databaseConnection import get_db_connection
 
 
-@apartment.route("/unitDetails/<int:unitRentID>")
+@apartment.route("/unitDetails/<int:unitRentID>", methods=["GET"])
 def unitDetails(unitRentID):
     if "username" not in session:
         flash("Please login to check this page!")
@@ -17,6 +17,25 @@ def unitDetails(unitRentID):
 
     conn = get_db_connection()
     cursor = conn.cursor()
+
+    """
+        now handling the additional feature to search interest
+        based on roommate count and move in date for user
+        I'll take a searchQuery modification process
+        to get the interests list
+    """
+    roommateCount = request.args.get("roommateCount")
+    moveInDate = request.args.get("moveInDate")
+
+    searchQuery = "SELECT * FROM Interests WHERE UnitRentID = %s"
+    queryParams = [unitRentID]
+
+    if roommateCount:
+        searchQuery += " AND RoommateCnt = %s"
+        queryParams.append(roommateCount)
+    if moveInDate:
+        searchQuery += " AND MoveInDate = %s"
+        queryParams.append(moveInDate)
 
     try:
         # Fetch unit details
@@ -26,7 +45,7 @@ def unitDetails(unitRentID):
         # Fetch amenities for this unit
         amenities = fetchUnitAmenities(cursor, unitRentID)
         # Fetch interests for this unit
-        interests = fetchUnitInterests(cursor, unitRentID)
+        interests = fetchUnitInterests(cursor, searchQuery, queryParams)
 
     except pymysql.Error as e:
         flash(f"Database error: {e}")

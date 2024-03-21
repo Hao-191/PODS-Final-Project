@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
     <title>Edit Pet Information</title>
 </head>
 
 <body>
     {% include '/components/header.html' %}
-    <h1>Edit Pet Information</h1>
-    <form action="" method="POST">
-        <input type="text" name="PetName" value="{{ pet['PetName'] }}" required /> </br>
-        <select name="PetType" required>
-            <option value="{{ pet['PetType'] }}" selected>{{ pet['PetType'] }}</option>
-            <option value="Dog">Dog</option>
-            <option value="Cat">Cat</option>
-            <option value="Rodent">Rodent</option>
-        </select> </br>
-        <select name="PetSize" required>
-            <option value="{{ pet['PetSize'] }}" selected>{{ pet['PetSize'] }}</option>
-            <option value="Large">Large</option>
-            <option value="Medium">Medium</option>
-            <option value="Small">Small</option>
-        </select> </br>
-        <input type="submit" value="Update Pet" />
-    </form>
+    <div class="main-container">
+        <h1>Edit Pet Information</h1>
+        <form action="" method="POST">
+            <input type="text" name="PetName" value="{{ pet['PetName'] }}" required /> </br>
+            <select name="PetType" required>
+                <option value="{{ pet['PetType'] }}" selected>{{ pet['PetType'] }}</option>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Rodent">Rodent</option>
+            </select> </br>
+            <select name="PetSize" required>
+                <option value="{{ pet['PetSize'] }}" selected>{{ pet['PetSize'] }}</option>
+                <option value="Large">Large</option>
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+            </select> </br>
+            <input type="submit" value="Update Pet" />
+        </form>
+    </div>
 </body>
 
 </html>

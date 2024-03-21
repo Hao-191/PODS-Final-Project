@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <title>User Info</title>
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+    <div class="main-container">
+        <div class="user-info-container">
+            <h2>User `{{ userDetails.username }}` Information</h2>
+            <p><strong>Username:</strong> {{ userDetails.username }}</p>
+            <p><strong>First Name:</strong> {{ userDetails.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ userDetails.last_name }}</p>
+            <p><strong>Date of Birth:</strong> {{ userDetails.DOB }}</p>
+            <p><strong>Gender:</strong>
+                {% if userDetails.gender == 0 %}
+                Not known
+                {% elif userDetails.gender == 1 %}
+                Male
+                {% elif userDetails.gender == 2 %}
+                Female
+                {% elif userDetails.gender == 9 %}
+                Not applicable
+                {% else %}
+                Other
+                {% endif %}
+            </p>
+            <p><strong>Email:</strong> {{ userDetails.email }}</p>
+            <p><strong>Phone:</strong> {{ userDetails.Phone }}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -40,11 +40,6 @@ def fetchUnitAmenities(cursor, unitRentID):
 
 
 # function to fetch unit interests
-def fetchUnitInterests(cursor, unitRentID):
-    cursor.execute(
-        """
-            SELECT * FROM Interests WHERE UnitRentID = %s
-        """,
-        (unitRentID,),
-    )
+def fetchUnitInterests(cursor, searchQuery, queryParams):
+    cursor.execute(searchQuery, queryParams)
     return cursor.fetchall()

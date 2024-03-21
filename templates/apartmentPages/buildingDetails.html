@@ -3,34 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
     <title>Building {{ building.BuildingName }} Details</title>
 </head>
 
 <body>
     {% include 'components/header.html' %}
+    <div class="main-container">
+        <div class="building-details-container">
+            <h2>{{ building.CompanyName }} - Building `{{ building.BuildingName }}` Details</h2>
+            <p><strong>Address:</strong> {{ building.AddrNum }} {{ building.AddrStreet }}, {{ building.AddrCity }}, {{
+                building.AddrState }} {{ building.AddrZipCode }}</p>
+            <p><strong>Year Built:</strong> {{ building.YearBuilt }}</p>
+            <p><strong>Available Units for Rent:</strong> {{ availableUnits }}</p>
 
-    <div class="building-details-container">
-        <h2>{{ building.CompanyName }} - Building `{{ building.BuildingName }}` Details</h2>
-        <p><strong>Address:</strong> {{ building.AddrNum }} {{ building.AddrStreet }}, {{ building.AddrCity }}, {{
-            building.AddrState }} {{ building.AddrZipCode }}</p>
-        <p><strong>Year Built:</strong> {{ building.YearBuilt }}</p>
-        <p><strong>Available Units for Rent:</strong> {{ availableUnits }}</p>
+            <h3>Amenities</h3>
+            <ul>
+                {% for amenity in amenities %}
+                <li><strong>{{ amenity.aType }}:</strong> {{ amenity.Description }} (Fee: ${{ amenity.Fee }}, Waiting
+                    List:
+                    {{ amenity.waitingList }})</li>
+                {% endfor %}
+            </ul>
 
-        <h3>Amenities</h3>
-        <ul>
-            {% for amenity in amenities %}
-            <li><strong>{{ amenity.aType }}:</strong> {{ amenity.Description }} (Fee: ${{ amenity.Fee }}, Waiting List:
-                {{ amenity.waitingList }})</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Pet Policies</h3>
-        <ul>
-            {% for policy in petPolicies %}
-            <li>{{ policy.PetType }} (Size: {{ policy.PetSize }}, Allowed: {{ 'Yes' if policy.isAllowed else 'No' }},
-                Registration Fee: ${{ policy.RegistrationFee }}, Monthly Fee: ${{ policy.MonthlyFee }})</li>
-            {% endfor %}
-        </ul>
+            <h3>Pet Policies</h3>
+            <ul>
+                {% for policy in petPolicies %}
+                <li>{{ policy.PetType }} (Size: {{ policy.PetSize }}, Allowed: {{ 'Yes' if policy.isAllowed else 'No'
+                    }},
+                    Registration Fee: ${{ policy.RegistrationFee }}, Monthly Fee: ${{ policy.MonthlyFee }})</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 

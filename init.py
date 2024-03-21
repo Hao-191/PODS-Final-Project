@@ -12,7 +12,7 @@ conn = get_db_connection()
 # Define a route to hello function
 @app.route("/")
 def hello():
-    return render_template("index.html")
+    return render_template("userAuthPages/login.html")
 
 
 app.secret_key = "some key that you will never guess"

@@ -1,21 +1,27 @@
 <html>
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='userAuthPages/css/userAuth.css') }}">
 	<title>Login to Roomio</title>
 </head>
 
 <body>
-	{% include '/components/flashMsg.html' %}
-	<form action="/loginAuth" method="POST">
-		<input type="text" name="username" placeholder="username" required /> </br>
-		<input type="password" name="password" placeholder="password" required /></br>
-		<input type="submit" value=Login />
-		{% if error %}
-		<p class="error"><strong>Error:</strong> {{error}}</p>
-		{% endif %}
-	</form>
-
-	<a href="/">Go back</a>
+	<div class="login-container">
+		<h1>Login to Roomio</h1>
+		{% include '/components/flashMsg.html' %}
+		<form action="/loginAuth" method="POST" class="login-form">
+			<input type="text" name="username" placeholder="username" required /> </br>
+			<input type="password" name="password" placeholder="password" required /></br>
+			<input type="submit" value="Login" />
+			{% if error %}
+			<p class="error"><strong>Error:</strong> {{error}}</p>
+			{% endif %}
+		</form>
+		<p>Do not have an account?</p>
+		<a href="/register">Register Here</a>
+	</div>
 
 </body>
 
