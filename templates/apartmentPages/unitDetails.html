@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='apartmentPages/css/unitDetails.css') }}">
+    <title>{{ unit.CompanyName }} Unit {{ unit.unitNumber }} Details</title>
+</head>
+
+<body>
+    {% include 'components/header.html' %}
+    <div class="unit-details-header">
+        <h1>Unit {{ unit.unitNumber }} Details</h1>
+        <a href="{{ url_for('interest.postNewInterest', unitRentID=unit.UnitRentID) }}" class="post-interest-btn">Post Interest</a>
+    </div>
+    <p><strong>Monthly Rent:</strong> {{ unit.MonthlyRent }}</p>
+    <p><strong>Square Footage:</strong> {{ unit.squareFootage }}</p>
+    <p><strong>Available Date for Move-In:</strong> {{ unit.AvailableDateForMoveIn }}</p>
+
+    <h2>Rooms</h2>
+    <ul>
+        {% for room in rooms %}
+        <li>{{ room.name }}: {{ room.squareFootage }} sqft, {{ room.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Amenities</h2>
+    <ul>
+        {% for amenity in amenities %}
+        <li>{{ amenity.aType }}: {{ amenity.Description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Interests</h2>
+    <ul>
+        {% for interest in interests %}
+        <li>User: {{ interest.username }}, Roommates: {{ interest.RoommateCnt }}, Move-in Date: {{ interest.MoveInDate
+            }}</li>
+        {% endfor %}
+    </ul>
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='components/css/header.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Roomio</h1>
+            <form action="/home" method="GET" class="search-form">
+                <input type="text" name="companyName" placeholder="Company Name" required>
+                <input type="text" name="buildingName" placeholder="Building Name" required>
+                <button type="submit">Search</button>
+            </form>
+            <div class="dropdown">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    <a href="/home">Home</a>
+                    <a href="/myPets">View My Pets</a>
+                    <a href="/addNewPet">Add New Pet</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</body>

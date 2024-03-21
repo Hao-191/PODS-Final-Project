@@ -1,0 +1,9 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div id="flash-messages">
+        {% for message in messages %}
+        <p class="error"><strong>Flash Massages:</strong> {{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endwith %}

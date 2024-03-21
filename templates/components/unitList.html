@@ -1,0 +1,32 @@
+<h2>Apartment Units</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Building Name</th>
+            <th>Unit Number</th>
+            <th>Monthly Rent</th>
+            <th>Square Footage</th>
+            <th>Available Date For Move-In</th>
+            <th>Allowed Pets</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for unit in apartmentUnits %}
+        <tr>
+            <td>{{ unit.CompanyName }}</td>
+            <td><a
+                    href="{{ url_for('apartment.buildingDetails', companyName=unit.CompanyName, buildingName=unit.BuildingName) }}">{{
+                    unit.BuildingName }}</a></td>
+            <td><a href="{{ url_for('apartment.unitDetails', unitRentID=unit.UnitRentID) }}">{{ unit.unitNumber }}</a>
+            </td>
+            <td>{{ unit.MonthlyRent }}</td>
+            <td>{{ unit.squareFootage }}</td>
+            <td>{{ unit.AvailableDateForMoveIn }}</td>
+            <td>
+                {{ allowedPetsByUnit[unit.UnitRentID] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

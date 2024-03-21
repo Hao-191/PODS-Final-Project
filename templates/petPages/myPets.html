@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pets</title>
+</head>
+<style type="text/css">
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    {% include '/components/header.html' %}
+    <h1>{{username}}'s Pets</h1>
+    {% include '/components/flashMsg.html' %}
+    <table>
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Pet Type</th>
+                <th>Pet Size</th>
+                <th>Edit Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pet in pets %}
+            <tr>
+                <td>{{ pet.PetName }}</td>
+                <td>{{ pet.PetType }}</td>
+                <td>{{ pet.PetSize }}</td>
+                <td>
+                    <a href="/editPetInfo/{{ pet.PetName }}/{{ pet.PetType }}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{username}}'s Home Page</title>
+	<style type="text/css">
+		table,
+		th,
+		td {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	{% include '/components/header.html' %}
+	<h1>Welcome to Roomio, {{username}}!</h1>
+	{% include '/components/flashMsg.html' %}
+
+	{% include '/components/unitList.html' %}
+
+</body>
+
+
+</html>
