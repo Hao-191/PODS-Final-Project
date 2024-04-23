@@ -4,34 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='apartmentPages/css/detailsFrame.css') }}">
     <title>Building {{ building.BuildingName }} Details</title>
 </head>
 
 <body>
     {% include 'components/header.html' %}
     <div class="main-container">
-        <div class="building-details-container">
-            <h2>{{ building.CompanyName }} - Building `{{ building.BuildingName }}` Details</h2>
+        <h2>{{ building.CompanyName }} - Building <strong>{{ building.BuildingName }}</strong></h2>
+        <div class="details-info-container">
+            <h2>{{ building.BuildingName }}</h2>
             <p><strong>Address:</strong> {{ building.AddrNum }} {{ building.AddrStreet }}, {{ building.AddrCity }}, {{
                 building.AddrState }} {{ building.AddrZipCode }}</p>
             <p><strong>Year Built:</strong> {{ building.YearBuilt }}</p>
             <p><strong>Available Units for Rent:</strong> {{ availableUnits }}</p>
 
             <h3>Amenities</h3>
-            <ul>
+            <ul class="amenities">
                 {% for amenity in amenities %}
-                <li><strong>{{ amenity.aType }}:</strong> {{ amenity.Description }} (Fee: ${{ amenity.Fee }}, Waiting
-                    List:
-                    {{ amenity.waitingList }})</li>
+                <li>
+                    <div class="item-header"><strong>{{ amenity.aType }}:</strong> {{ amenity.Description }}</div>
+                    <div class="item-details">Fee: ${{ amenity.Fee }}, Waiting List: {{ amenity.waitingList }}</div>
+                </li>
                 {% endfor %}
             </ul>
 
             <h3>Pet Policies</h3>
-            <ul>
+            <ul class="pet-policies">
                 {% for policy in petPolicies %}
-                <li>{{ policy.PetType }} (Size: {{ policy.PetSize }}, Allowed: {{ 'Yes' if policy.isAllowed else 'No'
-                    }},
-                    Registration Fee: ${{ policy.RegistrationFee }}, Monthly Fee: ${{ policy.MonthlyFee }})</li>
+                <li>
+                    <div class="item-header"><strong>{{ policy.PetType }}:</strong> Allowed: {{ 'Yes' if
+                        policy.isAllowed else 'No' }}, Size: {{ policy.PetSize }}</div>
+                    <div class="item-details">Registration Fee: ${{ policy.RegistrationFee }}, Monthly Fee: ${{
+                        policy.MonthlyFee }}</div>
+                </li>
                 {% endfor %}
             </ul>
         </div>

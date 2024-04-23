@@ -1,17 +1,11 @@
 # Import Flask Library
 from flask import render_template
-
 from app import app
 
-from databaseConnection import get_db_connection
 
-# Configure MySQL
-conn = get_db_connection()
-
-
-# Define a route to hello function
+# Route to enter the Roomio
 @app.route("/")
-def hello():
+def roomio():
     return render_template("userAuthPages/login.html")
 
 

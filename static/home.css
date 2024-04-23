@@ -1,13 +1,35 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
+.details-container {
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-table, th, td {
-    border: 1px solid black;
+.advanced-search-form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 5px;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
+.advanced-search-form input[type="number"],
+.advanced-search-form select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.advanced-search-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.advanced-search-form button:hover {
+  background-color: #0056b3;
 }

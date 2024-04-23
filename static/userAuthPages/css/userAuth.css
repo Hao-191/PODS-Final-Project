@@ -36,7 +36,7 @@ input[type="date"]:before {
   margin-right: 0.5em;
 }
 input[type="date"]:focus:before {
-  content: '';
+  content: "";
 }
 
 .login-form input[type="submit"] {

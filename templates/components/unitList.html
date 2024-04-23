@@ -1,4 +1,15 @@
 <h2>Apartment Units Information</h2>
+<form action="{{ url_for('home.home') }}" method="get" class="advanced-search-form">
+    <input type="number" name="maxRent" placeholder="Max Monthly Rent" min="0">
+    <input type="number" name="minSquareFootage" placeholder="Min Square Footage" min="0">
+    <select name="amenities">
+        <option value="">Select an Amenity</option>
+        {% for amenity in allAmenities %}
+            <option value="{{ amenity.aType }}">{{ amenity.aType }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Advanced Search</button>
+</form>
 <table>
     <thead>
         <tr>
@@ -9,16 +20,18 @@
             <th>Square Footage</th>
             <th>Available Date For Move-In</th>
             <th>Allowed Pets</th>
+            <th>Amenities</th>
         </tr>
     </thead>
     <tbody>
         {% for unit in apartmentUnits %}
         <tr>
             <td>{{ unit.CompanyName }}</td>
-            <td><a
-                    href="{{ url_for('apartment.buildingDetails', companyName=unit.CompanyName, buildingName=unit.BuildingName) }}" class="table-button">{{
+            <td><a href="{{ url_for('apartment.buildingDetails', companyName=unit.CompanyName, buildingName=unit.BuildingName) }}"
+                    class="table-button">{{
                     unit.BuildingName }}</a></td>
-            <td><a href="{{ url_for('apartment.unitDetails', unitRentID=unit.UnitRentID) }}" class="table-button">{{ unit.unitNumber }}</a>
+            <td><a href="{{ url_for('apartment.unitDetails', unitRentID=unit.UnitRentID) }}" class="table-button">{{
+                    unit.unitNumber }}</a>
             </td>
             <td>{{ unit.MonthlyRent }}</td>
             <td>{{ unit.squareFootage }}</td>
@@ -26,6 +39,7 @@
             <td>
                 {{ allowedPetsByUnit[unit.UnitRentID] }}
             </td>
+            <td>{{ amenitiesByUnit[unit.UnitRentID] }} </td>
         </tr>
         {% endfor %}
     </tbody>

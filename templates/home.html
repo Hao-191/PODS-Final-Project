@@ -13,8 +13,9 @@
 	<div class="main-container">
 		<h1>Welcome to Roomio, {{username}}!</h1>
 		{% include '/components/flashMsg.html' %}
-	
-		{% include '/components/unitList.html' %}
+		<div class="details-container">
+			{% include '/components/unitList.html' %}
+		</div>
 	</div>
 </body>
 

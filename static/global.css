@@ -4,6 +4,7 @@
 }
 
 table {
+  margin-top: 20px;
   width: 100%;
   border-collapse: collapse;
 }
@@ -32,6 +33,6 @@ td {
   cursor: pointer;
 }
 
-.table-button:hover{
+.table-button:hover {
   background-color: #0056b3;
 }
