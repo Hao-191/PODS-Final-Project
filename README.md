@@ -21,7 +21,7 @@ Clone the repository:
 
 ### Setting up the Database
 - Ensure MySQL is installed and running on your system.
-- Create a database and update the connection string in the application settings.
+- Create a database `roomio`, insert the `ProjSchema.sql` to `roomio`, and update the connection in `databaseConnection.py`.
 
 ### Running the Application
 1. Navigate to the project directory:
