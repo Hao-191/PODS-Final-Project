@@ -22,9 +22,12 @@ Below is an overview of the main components of our Flask application's directory
 ### `blueprints/`
 - This directory contains different modules, each corresponding to a different blueprint.
 - Each module contains routes and views for a specific part of the application.
-- Example modules:
-  - `auth.py` for authentication related routes.
-  - `dashboard.py` for the main dashboard features.
+- Modules:
+  - `userAuthBlueprint.py` for authentication-related routes.
+  - `userPetBlueprint.py` for the user pet management features.
+  - `userHomeBlueprint.py` for the user home features.
+  - `apartmentBlueprint.py` for the apartment and unit management features.
+  - `interestBlueprint.py` for the interest management features.
 
 ### `utils/`
 - Contains utility functions and classes that support the application, particularly with database interactions.
@@ -40,7 +43,6 @@ Below is an overview of the main components of our Flask application's directory
 
 ### `databaseConnection.py`
 - Manages database connections.
-- Provides functionality to connect and disconnect from the database.
   
 ## Getting Started
 ### Prerequisites
