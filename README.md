@@ -4,10 +4,13 @@
 Roomio is a web application developed **individually** using Flask, designed to streamline room management and operations. The application integrates with a MySQL database to store and manage data efficiently.
 
 ## Features
-- User authentication and authorization
-- Room booking and management
-- Dynamic data handling with MySQL
-- Responsive web interface
+- Login & User Session Handle
+- Search Certain Apartment Units
+- Register Pet
+- Post and View Interests
+- Display Unit and Building Info
+- More Advanced Search of Units
+- Search Interest
 
 ## Getting Started
 ### Prerequisites
