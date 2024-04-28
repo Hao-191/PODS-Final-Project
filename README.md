@@ -1,7 +1,7 @@
 # Roomio PODS Final Project
 
 ## Project Overview
-Roomio is a web application developed using Flask, designed to streamline room management and operations. The application integrates with a MySQL database to store and manage data efficiently.
+Roomio is a web application developed **individually** using Flask, designed to streamline room management and operations. The application integrates with a MySQL database to store and manage data efficiently.
 
 ## Features
 - User authentication and authorization
