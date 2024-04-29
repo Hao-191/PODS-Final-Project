@@ -12,14 +12,18 @@
     {% include '/components/header.html' %}
     <div class="main-container">
         <h1>Edit Pet Information</h1>
+        {% include '/components/flashMsg.html' %}
         <div class="pet-form-container">
             <form action="" method="POST" class="pet-form">
                 <input type="text" name="PetName" value="{{ pet['PetName'] }}" required /> </br>
                 <select name="PetType" required>
-                    <option value="{{ pet['PetType'] }}" selected>{{ pet['PetType'] }}</option>
-                    <option value="Dog">Dog</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Rodent">Rodent</option>
+                    {% for petType in petTypes %}
+                    {% if petType.PetType == pet['PetType']%}
+                    <option value="{{ petType.PetType }}" selected>{{ petType.PetType }}</option>
+                    {% else %}
+                    <option value="{{ petType.PetType }}">{{ petType.PetType }}</option>
+                    {% endif %}
+                    {% endfor %}
                 </select> </br>
                 <select name="PetSize" required>
                     <option value="{{ pet['PetSize'] }}" selected>{{ pet['PetSize'] }}</option>

@@ -17,9 +17,9 @@
             <form action="" method="POST" class="pet-form">
                 <input type="text" name="PetName" placeholder="Pet Name" required /> </br>
                 <select name="PetType" required>
-                    <option value="Dog">Dog</option>
-                    <option value="Cat">Cat</option>
-                    <option value="Rodent">Rodent</option>
+                    {% for petType in petTypes %}
+                    <option value="{{ petType.PetType }}">{{ petType.PetType }}</option>
+                    {% endfor %}
                 </select> </br>
                 <select name="PetSize" required>
                     <option value="Large">Large</option>
