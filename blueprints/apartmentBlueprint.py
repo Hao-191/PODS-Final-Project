@@ -34,7 +34,7 @@ def unitDetails(unitRentID):
         searchQuery += " AND RoommateCnt = %s"
         queryParams.append(roommateCount)
     if moveInDate:
-        searchQuery += " AND MoveInDate = %s"
+        searchQuery += " AND MoveInDate >= %s"
         queryParams.append(moveInDate)
 
     try:
